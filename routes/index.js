@@ -11,8 +11,8 @@ router.get('/', function (req, res, next) {
   next();
 });
 
-router.get('/', function (req, res) {
-  res.sendFile( '../public/stylesheets/style.css');
-});
+// router.get('/', function (req, res) {
+//   res.sendFile( '../public/stylesheets/style.css');
+// });
 
 module.exports = router;

@@ -10,6 +10,8 @@ const server = app.listen(port, function() {
     console.log("Server listening!!!");
 });
 
+app.use(express.static("public"));
+
 app.use('/', routes);
 
 
