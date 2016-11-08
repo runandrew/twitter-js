@@ -1,15 +1,16 @@
 "use strict";
-//Rachel was here
-//Andrew was here
+
 const express = require("express");
 const app = express();
 const nunjucks = require("nunjucks");
-
+const routes = require('./routes/');
 
 const port = 3000;
 const server = app.listen(port, function() {
     console.log("Server listening!!!");
 });
+
+app.use('/', routes);
 
 
 app.use(function(req, res, next) {
@@ -17,19 +18,19 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use("/special/", function(req, res, next) {
-    console.log("You've reached the special area!");
-    next();
-});
+// app.use("/special/", function(req, res, next) {
+//     console.log("You've reached the special area!");
+//     next();
+// });
 
-app.get("/", function(req, res, next) {
-    console.log(req.method, req.url, res.statusCode);
-    res.send("Welcome!");
-});
+// app.get("/", function(req, res, next) {
+//     console.log(req.method, req.url, res.statusCode);
+//     res.send("Welcome!");
+// });
 
-app.get("/news", function(req, res, next) {
-    res.send("This is the news!");
-});
+// app.get("/news", function(req, res, next) {
+//     res.send("This is the news!");
+// });
 
 // let locals = {
 //     title: 'An Example',
@@ -40,10 +41,10 @@ app.get("/news", function(req, res, next) {
 //     ]
 // };
 
-app.get("/renderTemplate", function(req, res, next) {
-    let people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
-    res.render( 'index', {title: 'Hall of Fame', people: people} );
-});
+// app.get("/renderTemplate", function(req, res, next) {
+//     let people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
+//     res.render( 'index', {title: 'Hall of Fame', people: people} );
+// });
 
 nunjucks.configure("views", { noCache: true});
 app.set("view engine", "html");
